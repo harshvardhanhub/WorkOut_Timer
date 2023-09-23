@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exercise List</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <!-- Custom CSS -->
+    <style>
+      .exercise-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+      .exercise-card {
+        width: 18%;
+        margin-bottom: 20px;
+        transition: transform 2s;
+      }
+      .exercise-card:hover{
+        transform: translateY(-10px);
+        color: rgb(243, 9, 9);
+        background-color: rgb(152, 2, 137);
+      }
+      .exercise-image {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+      .exercise-name {
+        margin-top: 10px;
+        font-weight: bold;
+        text-align: center;
+      }
+      .timer-button {
+        width: 100%;
+        margin-top: 10px;
+      }
+      .text-center{
+        color: red;
+        font-size: 70px;
+        margin: 30px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">WORKOUT TIME</h1>
+      <video id="background-video" autoplay loop muted>
+        <source src="GymVideo.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <audio loop autoplay volume="0.7">
+  <source src="Music/Enemy.mp3" type="audio/mpeg">
+</audio>
+
+      <div class="exercise-container">
+        <!-- Exercise Card -->
+        <div class="card exercise-card">
+          <img src="Images/squats.jpg" class="card-img-top exercise-image" alt="...">
+          <div class="card-body">
+            <h5 class="card-title exercise-name">SQUATS</h5>
+            <button class="btn btn-primary timer-button" data-time="10">Start Timer</button>
+          </div>
+        </div>
+        <div class="card exercise-card">
+          <img src="Images/planks.png" class="card-img-top exercise-image" alt="...">
+          <div class="card-body">
+            <h5 class="card-title exercise-name">PLANKS</h5>
+            <button class="btn btn-primary timer-button" data-time="10">Start Timer</button>
+          </div>
+        </div>
+        <div class="card exercise-card">
+          <img src="Images/pushups.jpg" class="card-img-top exercise-image" alt="...">
+          <div class="card-body">
+            <h5 class="card-title exercise-name">PUSH-UPS</h5>
+            <button class="btn btn-primary timer-button" data-time="10">Start Timer</button>
+          </div>
+        </div>
+        <div class="card exercise-card">
+          <img src="Images/lunges.jpg" class="card-img-top exercise-image" alt="...">
+          <div class="card-body">
+            <h5 class="card-title exercise-name">LUNGES</h5>
+            <button class="btn btn-primary timer-button" data-time="10">Start Timer</button>
+          </div>
+        </div>
+        <div class="card exercise-card">
+          <img src="Images/deadlift.jpg" class="card-img-top exercise-image" alt="...">
+          <div class="card-body">
+            <h5 class="card-title exercise-name">DEAD-LIFT</h5>
+            <button class="btn btn-primary timer-button" data-time="10">Start Timer</button>
+          </div>
+        </div>
+      </div>
+      <div class="exercise-container">
+        <!-- Exercise Card -->
+        <div class="card exercise-card">
+          <img src="Images/abdcrucnhes.jpg" class="card-img-top exercise-image" alt="...">
+          <div class="card-body">
+            <h5 class="card-title exercise-name">ABDOMINAL-CRUNCHES</h5>
+            <button class="btn btn-primary timer-button" data-time="10">Start Timer</button>
+          </div>
+        </div>
+        <div class="card exercise-card">
+          <img src="Images/Barbell.jpg" class="card-img-top exercise-image" alt="...">
+          <div class="card-body">
+            <h5 class="card-title exercise-name">BARBELL-CHEAT-CURL</h5>
+            <button class="btn btn-primary timer-button" data-time="10">Start Timer</button>
+          </div>
+        </div>
+        <div class="card exercise-card">
+          <img src="Images/Dumbbellrows.jpg" class="card-img-top exercise-image" alt="...">
+          <div class="card-body">
+            <h5 class="card-title exercise-name">DUMBELL-ROWS</h5>
+            <button class="btn btn-primary timer-button" data-time="10">Start Timer</button>
+          </div>
+        </div>
+        <div class="card exercise-card">
+          <img src="Images/pullups.jpg" class="card-img-top exercise-image" alt="...">
+          <div class="card-body">
+            <h5 class="card-title exercise-name">PULL-UPS</h5>
+            <button class="btn btn-primary timer-button" data-time="10">Start Timer</button>
+          </div>
+        </div>
+        <div class="card exercise-card">
+          <img src="Images/benchpress.jpg" class="card-img-top exercise-image" alt="...">
+          <div class="card-body">
+            <h5 class="card-title exercise-name">BENCH-PRESS</h5>
+            <button class="btn btn-primary timer-button" data-time="10">Start Timer</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="nextExerciseModal" tabindex="-1" role="dialog" aria-labelledby="nextExerciseModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="nextExerciseModalLabel">Next Exercise</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Get ready for the next exercise!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Start</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- JavaScript -->
+    <script>
+      $(document).ready(function() {
+        $('.timer-button').click(function() {
+          var time = $(this).data('time');
+          var button = $(this);
+          var countdown = setInterval(function() {
+            time--;
+            button.html('Time left: ' + time + 's');
+            if (time == 0) {
+              clearInterval(countdown);
+              $('#nextExerciseModal').modal('show');
+            }
+          }, 1000);
+        });
+      });
+    </script>
+  </body>
+</html
